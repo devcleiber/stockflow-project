@@ -1,8 +1,9 @@
 package domain;
 
 public class Product {
-    private double price;
+    private String id;
     private String name;
+    private double price;
     private int quantity;
     private int limitQuantity;
     private int minQuantity;
@@ -13,6 +14,16 @@ public class Product {
         setLimitQuantity(limitQuantity);
         setQuantity(quantity);
         setMinQuantity(minQuantity);
+
+        this.id = Integer.toHexString(nextId++).toUpperCase();
+
+    }
+
+    // gerador de id
+    private static int nextId = 2650;
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -74,4 +85,5 @@ public class Product {
         }
         this.minQuantity = minQuantity;
     }
+
 }

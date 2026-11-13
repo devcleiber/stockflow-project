@@ -13,4 +13,13 @@ public class ProductRepository {
     public ArrayList<Product> getAllProducts() {
         return productStock;
     }
+
+    public Product findProductById(String id) {
+        for (Product product : productStock) {
+            if (product.getId().equals(id)) {
+                return product;
+            }
+        }
+        return null; // Return null if the product with the given ID is not found
+    }
 }
