@@ -21,4 +21,14 @@ public class ProductServices {
         return repository.getAllProducts();
     }
 
+    // view product stock quantity by id:
+    public int getStockQuantity(String id) {
+        Product product = repository.findProductById(id);
+        if (product != null) {
+            return product.getQuantity();
+        } else {
+            return -1; // Product not found
+        }
+    }
+
 }
