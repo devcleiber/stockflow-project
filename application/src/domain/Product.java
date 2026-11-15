@@ -1,14 +1,16 @@
 package domain;
 
 public class Product {
-    private String id;
+    private final String id;
     private String name;
     private double price;
     private int quantity;
     private int limitQuantity;
     private int minQuantity;
+    private ProductCategory category;
 
-    public Product(String name, double price, int limitQuantity, int quantity, int minQuantity) {
+    public Product(String name, double price, int limitQuantity, int quantity, int minQuantity,
+            ProductCategory category) {
         setName(name);
         setPrice(price);
         setLimitQuantity(limitQuantity);
@@ -16,7 +18,7 @@ public class Product {
         setMinQuantity(minQuantity);
 
         this.id = Integer.toHexString(nextId++).toUpperCase();
-
+        this.category = category;
     }
 
     // gerador de id
@@ -44,6 +46,10 @@ public class Product {
 
     public int getMinQuantity() {
         return minQuantity;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
     }
 
     public void setName(String name) {
@@ -86,4 +92,11 @@ public class Product {
         this.minQuantity = minQuantity;
     }
 
+    public void setCategory(ProductCategory category) {
+        if (category == null) {
+            System.out.println("Product category cannot be null.");
+            return;
+        }
+        this.category = category;
+    }
 }
